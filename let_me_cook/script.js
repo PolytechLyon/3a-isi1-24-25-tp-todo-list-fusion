@@ -1,4 +1,5 @@
-let items = localStorage.getItem("items");
+const items = localStorage.getItem("items");
+let editMode = false;
 if (items === null || items === "") {
     localStorage.setItem("items", "");
 } else {
@@ -31,7 +32,6 @@ function addItem(newItemTitle) {
     ol.appendChild(newLi);
 }
 
-
 const addBtn = document.getElementById("new-todo-item-add");
 
 addBtn.addEventListener("click", function () {
@@ -39,7 +39,11 @@ addBtn.addEventListener("click", function () {
     addItem(newItemTitle.value);
     localStorage.setItem(
         "items",
-        localStorage.getItem("items").split(",").concat(newItemTitle.value).join(",")
+        localStorage
+            .getItem("items")
+            .split(",")
+            .concat(newItemTitle.value)
+            .join(",")
     );
     newItemTitle.value = "";
 });
@@ -58,6 +62,7 @@ function editItem(e) {
     document.getElementById("new-item").style.display = "none";
     document.getElementById("edit-item").style.display = "block";
     document.getElementById("edit-todo-item-title").value = title.innerText;
+    editMode = true;
 }
 
 document
@@ -68,11 +73,24 @@ document
 
         let itemsArray = localStorage.getItem("items").split(",");
         itemsArray[
-            document.getElementById("editable-item").parentNode.getAttribute("index")
+            document
+                .getElementById("editable-item")
+                .parentNode.getAttribute("index")
         ] = document.getElementById("edit-todo-item-title").value;
         localStorage.setItem("items", itemsArray.join(","));
-        
+
         document.getElementById("new-item").style.display = "block";
         document.getElementById("edit-item").style.display = "none";
         document.getElementById("editable-item").removeAttribute("id");
+        editMode = false;
     });
+
+document.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        document
+            .getElementById(
+                editMode ? "edit-todo-item-confirm" : "new-todo-item-add"
+            )
+            .click();
+    }
+});
