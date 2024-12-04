@@ -1,0 +1,30 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>Todo</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <h2>Todo List</h2>
+  <ol id="todo-list">
+  </ol>
+  <div id="new-item">
+    <h3>New todo item</h3>
+    <label for="new-todo-item-title">Title</label>
+    <input id="new-todo-item-title"/>
+    <button id="new-todo-item-add">Add</button>
+  </div>
+  <div id="edit-item" hidden>
+    <h3>Edit todo item</h3>
+    <label for="edit-todo-item-title">Title</label>
+    <input id="edit-todo-item-title"/>
+    <button id="edit-todo-item-confirm">Confirm</button>
+    <button id="edit-todo-item-cancel" >Cancel</button>
+  </div>
+  <script src="./script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+#todo-list {
+    li {
+        span {
+            display: inline-block;
+            width: 15em;
+        }
+
+        button {
+            width: 4em;
+            margin: 2px;
+        }
+    }
+}
