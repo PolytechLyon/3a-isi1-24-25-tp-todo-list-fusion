@@ -35,9 +35,11 @@ function editItem(e) {
     document.getElementById('new-item').style.display = 'none';
     document.getElementById('edit-item').style.display = 'block';
     document.getElementById('edit-todo-item-title').value = title.innerText;
-    document.getElementById('edit-todo-item-confirm').addEventListener('click', function() {
-        document.getElementById('editable-item').innerText = document.getElementById('edit-todo-item-title').value;
-        document.getElementById('new-item').style.display = 'block';
-        document.getElementById('edit-item').style.display = 'none';
-    });
+   
 }
+document.getElementById('edit-todo-item-confirm').addEventListener('click', function() {
+    document.getElementById('editable-item').innerText = document.getElementById('edit-todo-item-title').value;
+    document.getElementById('new-item').style.display = 'block';
+    document.getElementById('edit-item').style.display = 'none';
+    document.getElementById('editable-item').removeAttribute('id');
+});
